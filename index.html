@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TkLearn — Build GUIs with Python</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="nav-logo">Tk<span>Learn</span></a>
+        <ul class="nav-links">
+            <li><a href="https://sites.google.com/stjohn.edu.et/it-g11-and-g12/grade-11?authuser=0">Main Page</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#widgets">Widgets</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#cheatsheet">Cheatsheet</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-glow2"></div>
+        <div class="hero-content">
+            <div class="hero-tag">Python GUI Development</div>
+            <h1>Build desktop apps<br>with <span class="hl">tkinter</span> &amp;<br><span class="hl2">Python</span></h1>
+            <p class="hero-sub">A complete interactive guide to building GUI applications — from your first window to a
+                fully working data entry form, step by step.</p>
+            <div class="hero-ctas">
+                <a href="#projects" class="btn-primary">Start Building →</a>
+                <a href="#widgets" class="btn-ghost">Widget Reference</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about">
+        <div style="max-width:1100px;margin:0 auto">
+            <div class="section-label">What is tkinter?</div>
+            <h2>Python's built-in GUI library</h2>
+            <p class="section-intro">tkinter comes installed with Python — no pip install needed. It lets you build real
+                desktop windows with buttons, inputs, dropdowns, and more.</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-card-icon" style="background:rgba(79,255,176,0.1)">🐍</div>
+                    <h3>Built into Python</h3>
+                    <p>tkinter ships with every Python installation. Just <code
+                            style="color:var(--blue);font-family:var(--font-code)">import tkinter as tk</code> and
+                        you're ready — no packages to install.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon" style="background:rgba(123,92,255,0.1)">🪟</div>
+                    <h3>Cross-platform</h3>
+                    <p>Write once, run on Windows, macOS, and Linux. Your app's window adapts to the native look of each
+                        operating system automatically.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon" style="background:rgba(76,201,240,0.1)">🧩</div>
+                    <h3>Widget-based</h3>
+                    <p>Everything is a widget — labels, buttons, text boxes, dropdowns. You place them on a window
+                        (called the "root") and arrange them using pack, grid, or place.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon" style="background:rgba(255,209,102,0.1)">⚡</div>
+                    <h3>Event-driven</h3>
+                    <p>tkinter uses an event loop — <code
+                            style="color:var(--blue);font-family:var(--font-code)">root.mainloop()</code>. The window
+                        waits for the user to interact, then runs your functions in response.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── WIDGET REFERENCE ── -->
+    <section id="widgets">
+        <div style="max-width:1100px;margin:0 auto">
+            <div class="section-label">Reference</div>
+            <h2>Widget library</h2>
+            <p class="section-intro">Click any widget below to see its properties and a ready-to-copy code example.</p>
+
+            <div class="widget-tabs">
+                <button class="wtab active" onclick="showWidget('label', this)">Label</button>
+                <button class="wtab" onclick="showWidget('entry', this)">Entry</button>
+                <button class="wtab" onclick="showWidget('button', this)">Button</button>
+                <button class="wtab" onclick="showWidget('spinbox', this)">Spinbox</button>
+                <button class="wtab" onclick="showWidget('combobox', this)">Combobox</button>
+                <button class="wtab" onclick="showWidget('checkbutton', this)">Checkbutton</button>
+                <button class="wtab" onclick="showWidget('labelframe', this)">LabelFrame</button>
+            </div>
+
+            <!-- Label -->
+            <div class="widget-panel active" id="wp-label">
+                <div class="widget-info">
+                    <h3>tk.Label</h3>
+                    <p class="widget-desc">Displays text or an image on screen. Labels are read-only — users can't edit
+                        them. Use them for titles, field names, and instructions.</p>
+                    <ul class="prop-list">
+                        <li><span class="prop-name">text=</span><span class="prop-desc">The string to display</span>
+                        </li>
+                        <li><span class="prop-name">font=</span><span class="prop-desc">("Arial", 12) — family and
+                                size</span></li>
+                        <li><span class="prop-name">fg= / bg=</span><span class="prop-desc">Foreground / background
+                                colour</span></li>
+                        <li><span class="prop-name">width=</span><span class="prop-desc">Width in characters</span></li>
+                        <li><span class="prop-name">anchor=</span><span class="prop-desc">Text alignment: "w", "center",
+                                "e"</span></li>
+                    </ul>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                    <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br><br>
+                    root = tk.<span class="cls">Tk</span>()<br>
+                    root.geometry(<span class="str">"300x150"</span>)<br><br>
+                    <span class="cm"># Simple label — .pack() centres it</span><br>
+                    tk.<span class="cls">Label</span>(root, text=<span class="str">"Hello, class!"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font=(<span class="str">"Arial"</span>, <span
+                        class="num">16</span>),<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fg=<span class="str">"#2ecc71"</span>).pack(pady=<span
+                        class="num">20</span>)<br><br>
+                    <span class="cm"># Positioned label</span><br>
+                    tk.<span class="cls">Label</span>(root, text=<span class="str">"First Name"</span>).place(x=<span
+                        class="num">20</span>, y=<span class="num">80</span>)<br><br>
+                    root.mainloop()
+                </div>
+            </div>
+
+            <!-- Entry -->
+            <div class="widget-panel" id="wp-entry">
+                <div class="widget-info">
+                    <h3>tk.Entry</h3>
+                    <p class="widget-desc">A single-line text input box. Save it in a variable so you can read what the
+                        user typed using <code style="font-family:var(--font-code);color:var(--blue)">.get()</code>.</p>
+                    <ul class="prop-list">
+                        <li><span class="prop-name">width=</span><span class="prop-desc">Width in characters (default
+                                20)</span></li>
+                        <li><span class="prop-name">show=</span><span class="prop-desc">Use "*" for password
+                                fields</span></li>
+                        <li><span class="prop-name">state=</span><span class="prop-desc">"normal", "disabled",
+                                "readonly"</span></li>
+                        <li><span class="prop-name">.get()</span><span class="prop-desc">Returns current text as a
+                                string</span></li>
+                        <li><span class="prop-name">.delete(0,END)</span><span class="prop-desc">Clears the field</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                    <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br><br>
+                    root = tk.<span class="cls">Tk</span>()<br>
+                    root.geometry(<span class="str">"300x150"</span>)<br><br>
+                    tk.<span class="cls">Label</span>(root, text=<span class="str">"First Name"</span>).place(x=<span
+                        class="num">20</span>, y=<span class="num">20</span>)<br><br>
+                    <span class="cm"># Save entry in a variable to read later</span><br>
+                    entry_fname = tk.<span class="cls">Entry</span>(root, width=<span class="num">20</span>)<br>
+                    entry_fname.place(x=<span class="num">20</span>, y=<span class="num">45</span>)<br><br>
+                    <span class="kw">def</span> <span class="fn">read_name</span>():<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;name = entry_fname.<span class="fn">get</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(<span class="str">f"Hello </span>{name}<span
+                        class="str">!"</span>)<br><br>
+                    tk.<span class="cls">Button</span>(root, text=<span class="str">"Read"</span>,
+                    command=read_name).place(x=<span class="num">20</span>, y=<span class="num">80</span>)<br>
+                    root.mainloop()
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="widget-panel" id="wp-button">
+                <div class="widget-info">
+                    <h3>tk.Button</h3>
+                    <p class="widget-desc">A clickable button. Use <code
+                            style="font-family:var(--font-code);color:var(--blue)">command=</code> to point to a
+                        function — but don't use brackets, or it runs immediately!</p>
+                    <ul class="prop-list">
+                        <li><span class="prop-name">text=</span><span class="prop-desc">Label on the button</span></li>
+                        <li><span class="prop-name">command=</span><span class="prop-desc">Function to call (no
+                                brackets!)</span></li>
+                        <li><span class="prop-name">width=</span><span class="prop-desc">Width in characters</span></li>
+                        <li><span class="prop-name">bg= / fg=</span><span class="prop-desc">Background / text
+                                colour</span></li>
+                        <li><span class="prop-name">state=</span><span class="prop-desc">"normal" or "disabled"</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                    <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br><br>
+                    root = tk.<span class="cls">Tk</span>()<br>
+                    root.geometry(<span class="str">"300x120"</span>)<br><br>
+                    <span class="kw">def</span> <span class="fn">say_hello</span>():<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(<span class="str">"Button
+                        clicked!"</span>)<br><br>
+                    <span class="cm"># command= takes the function NAME, no brackets</span><br>
+                    tk.<span class="cls">Button</span>(root,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text=<span class="str">"Click Me"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width=<span class="num">20</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command=say_hello).pack(pady=<span
+                        class="num">30</span>)<br><br>
+                    root.mainloop()
+                </div>
+            </div>
+
+            <!-- Spinbox -->
+            <div class="widget-panel" id="wp-spinbox">
+                <div class="widget-info">
+                    <h3>tk.Spinbox</h3>
+                    <p class="widget-desc">A number picker with up/down arrows. Set the minimum with <code
+                            style="font-family:var(--font-code);color:var(--blue)">from_=</code> (underscore because
+                        <code>from</code> is a Python keyword) and maximum with <code
+                            style="font-family:var(--font-code);color:var(--blue)">to=</code>.
+                    </p>
+                    <ul class="prop-list">
+                        <li><span class="prop-name">from_=</span><span class="prop-desc">Minimum value (note the
+                                underscore)</span></li>
+                        <li><span class="prop-name">to=</span><span class="prop-desc">Maximum value</span></li>
+                        <li><span class="prop-name">width=</span><span class="prop-desc">Width in characters</span></li>
+                        <li><span class="prop-name">increment=</span><span class="prop-desc">Step size (default
+                                1)</span></li>
+                        <li><span class="prop-name">.get()</span><span class="prop-desc">Returns current value as a
+                                string</span></li>
+                    </ul>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                    <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br><br>
+                    root = tk.<span class="cls">Tk</span>()<br>
+                    root.geometry(<span class="str">"300x120"</span>)<br><br>
+                    tk.<span class="cls">Label</span>(root, text=<span class="str">"Age"</span>).place(x=<span
+                        class="num">20</span>, y=<span class="num">20</span>)<br><br>
+                    <span class="cm"># from_= has underscore — "from" is a Python keyword</span><br>
+                    spin_age = tk.<span class="cls">Spinbox</span>(root, from_=<span class="num">16</span>, to=<span
+                        class="num">99</span>, width=<span class="num">12</span>)<br>
+                    spin_age.place(x=<span class="num">20</span>, y=<span class="num">45</span>)<br><br>
+                    <span class="kw">def</span> <span class="fn">show_age</span>():<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(spin_age.<span
+                        class="fn">get</span>())<br><br>
+                    tk.<span class="cls">Button</span>(root, text=<span class="str">"Print age"</span>,
+                    command=show_age).place(x=<span class="num">20</span>, y=<span class="num">80</span>)<br>
+                    root.mainloop()
+                </div>
+            </div>
+
+            <!-- Combobox -->
+            <div class="widget-panel" id="wp-combobox">
+                <div class="widget-info">
+                    <h3>ttk.Combobox</h3>
+                    <p class="widget-desc">A dropdown menu from the <code
+                            style="font-family:var(--font-code);color:var(--blue)">ttk</code> module (themed widgets).
+                        Pass a Python list to <code
+                            style="font-family:var(--font-code);color:var(--blue)">values=</code> to populate the
+                        options.</p>
+                    <ul class="prop-list">
+                        <li><span class="prop-name">values=</span><span class="prop-desc">A list of options to
+                                show</span></li>
+                        <li><span class="prop-name">width=</span><span class="prop-desc">Width in characters</span></li>
+                        <li><span class="prop-name">state=</span><span class="prop-desc">"readonly" prevents
+                                typing</span></li>
+                        <li><span class="prop-name">.get()</span><span class="prop-desc">Returns the selected
+                                option</span></li>
+                        <li><span class="prop-name">.set("x")</span><span class="prop-desc">Sets the default
+                                value</span></li>
+                    </ul>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                    <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br>
+                    <span class="kw">from</span> tkinter <span class="kw">import</span> ttk <span class="cm"># ttk has
+                        nicer widgets</span><br><br>
+                    root = tk.<span class="cls">Tk</span>()<br>
+                    root.geometry(<span class="str">"300x120"</span>)<br><br>
+                    tk.<span class="cls">Label</span>(root, text=<span class="str">"Title"</span>).place(x=<span
+                        class="num">20</span>, y=<span class="num">20</span>)<br><br>
+                    titles = [<span class="str">"Mr"</span>, <span class="str">"Ms"</span>, <span
+                        class="str">"Mrs"</span>, <span class="str">"Dr"</span>, <span class="str">"Prof"</span>]<br>
+                    combo = ttk.<span class="cls">Combobox</span>(root, values=titles, width=<span
+                        class="num">12</span>)<br>
+                    combo.place(x=<span class="num">20</span>, y=<span class="num">45</span>)<br><br>
+                    tk.<span class="cls">Button</span>(root, text=<span class="str">"Print"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command=<span class="kw">lambda</span>: <span
+                        class="fn">print</span>(combo.<span class="fn">get</span>())).place(x=<span
+                        class="num">20</span>, y=<span class="num">80</span>)<br>
+                    root.mainloop()
+                </div>
+            </div>
+
+            <!-- Checkbutton -->
+            <div class="widget-panel" id="wp-checkbutton">
+                <div class="widget-info">
+                    <h3>tk.Checkbutton</h3>
+                    <p class="widget-desc">A tick box. It must be linked to a <code
+                            style="font-family:var(--font-code);color:var(--blue)">tk.BooleanVar()</code> — the variable
+                        stores <code>True</code> when ticked, <code>False</code> when not.</p>
+                    <ul class="prop-list">
+                        <li><span class="prop-name">text=</span><span class="prop-desc">Label next to the tick
+                                box</span></li>
+                        <li><span class="prop-name">variable=</span><span class="prop-desc">A BooleanVar() to store the
+                                state</span></li>
+                        <li><span class="prop-name">onvalue= / offvalue=</span><span class="prop-desc">Custom values
+                                (default True/False)</span></li>
+                        <li><span class="prop-name">.get()</span><span class="prop-desc">Returns True or False</span>
+                        </li>
+                        <li><span class="prop-name">.set(True)</span><span class="prop-desc">Ticks the box
+                                programmatically</span></li>
+                    </ul>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                    <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br><br>
+                    root = tk.<span class="cls">Tk</span>()<br>
+                    root.geometry(<span class="str">"300x140"</span>)<br><br>
+                    <span class="cm"># BooleanVar holds the tick state</span><br>
+                    var_reg = tk.<span class="cls">BooleanVar</span>()<br>
+                    var_terms = tk.<span class="cls">BooleanVar</span>()<br><br>
+                    tk.<span class="cls">Checkbutton</span>(root, text=<span class="str">"Currently
+                        Registered"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable=var_reg).place(x=<span
+                        class="num">20</span>, y=<span class="num">30</span>)<br><br>
+                    tk.<span class="cls">Checkbutton</span>(root, text=<span class="str">"Accept terms"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable=var_terms).place(x=<span
+                        class="num">20</span>, y=<span class="num">60</span>)<br><br>
+                    tk.<span class="cls">Button</span>(root, text=<span class="str">"Check"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command=<span class="kw">lambda</span>: <span
+                        class="fn">print</span>(var_reg.<span class="fn">get</span>(), var_terms.<span
+                        class="fn">get</span>())<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).place(x=<span class="num">20</span>, y=<span
+                        class="num">100</span>)<br>
+                    root.mainloop()
+                </div>
+            </div>
+
+            <!-- LabelFrame -->
+            <div class="widget-panel" id="wp-labelframe">
+                <div class="widget-info">
+                    <h3>tk.LabelFrame</h3>
+                    <p class="widget-desc">A bordered box with a title, used to group related widgets. Widgets placed
+                        inside it use the frame as their parent instead of <code
+                            style="font-family:var(--font-code);color:var(--blue)">root</code>.</p>
+                    <ul class="prop-list">
+                        <li><span class="prop-name">text=</span><span class="prop-desc">Title shown in the frame
+                                border</span></li>
+                        <li><span class="prop-name">padx= / pady=</span><span class="prop-desc">Inner padding in
+                                pixels</span></li>
+                        <li><span class="prop-name">width= / height=</span><span class="prop-desc">Size in pixels (used
+                                with .place())</span></li>
+                        <li><span class="prop-name">relief=</span><span class="prop-desc">"groove", "ridge", "flat",
+                                "sunken"</span></li>
+                    </ul>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                    <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br><br>
+                    root = tk.<span class="cls">Tk</span>()<br>
+                    root.geometry(<span class="str">"350x200"</span>)<br><br>
+                    <span class="cm"># LabelFrame — place at a position on root</span><br>
+                    frame = tk.<span class="cls">LabelFrame</span>(root, text=<span class="str">"User
+                        Information"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padx=<span
+                        class="num">5</span>, pady=<span class="num">5</span>)<br>
+                    frame.place(x=<span class="num">10</span>, y=<span class="num">10</span>, width=<span
+                        class="num">330</span>, height=<span class="num">120</span>)<br><br>
+                    <span class="cm"># Widgets inside use frame as parent, not root</span><br>
+                    tk.<span class="cls">Label</span>(frame, text=<span class="str">"First Name"</span>).place(x=<span
+                        class="num">10</span>, y=<span class="num">5</span>)<br>
+                    entry = tk.<span class="cls">Entry</span>(frame, width=<span class="num">15</span>)<br>
+                    entry.place(x=<span class="num">10</span>, y=<span class="num">30</span>)<br><br>
+                    root.mainloop()
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ── PROJECTS ── -->
+    <section id="projects">
+        <div style="max-width:1100px;margin:0 auto">
+            <div class="section-label">Practice</div>
+            <h2>Build Real Projects</h2>
+            <p class="section-intro">Choose a project to start building step-by-step.</p>
+
+            <div class="about-grid">
+                <div class="about-card" style="cursor: pointer;" onclick="openProject('builder')">
+                    <div class="about-card-icon" style="background:rgba(79,255,176,0.1)">📋</div>
+                    <h3>Data Entry Form</h3>
+                    <p>Build a complete data entry form with text inputs, dropdowns, spinboxes, and checkboxes.</p>
+                    <button class="btn-primary" style="margin-top: 1rem; padding: 0.5rem 1rem;">Start Project →</button>
+                </div>
+                <div class="about-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <div class="about-card-icon" style="background:rgba(76,201,240,0.1)">🧮</div>
+                    <h3>Calculator (Coming Soon)</h3>
+                    <p>Build a working calculator using grid layout and button command callbacks.</p>
+                </div>
+                <div class="about-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <div class="about-card-icon" style="background:rgba(255,209,102,0.1)">✅</div>
+                    <h3>To-Do List (Coming Soon)</h3>
+                    <p>Build a task manager using Listbox, Scrollbar, and entry widgets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── STEP BUILDER ── -->
+    <section id="builder" style="display: none;">
+        <div style="max-width:1200px;margin:0 auto">
+
+            <div style="margin-bottom: 2rem;">
+                <button class="btn-ghost" onclick="closeProject('builder')"
+                    style="padding: 0.5rem 1rem; font-size: 0.8rem;">← Back to Projects</button>
+            </div>
+            <div class="section-label">Interactive guide</div>
+            <h2>Build the form, step by step</h2>
+            <p class="section-intro">Follow the steps to build the complete data entry form. Each step introduces one
+                new concept.</p>
+
+            <div class="builder-layout">
+                <div class="steps-sidebar">
+                    <div class="step-item active" onclick="goStep(0, this)" id="si-0">
+                        <div class="step-dot">1</div>
+                        <div class="step-meta">
+                            <h4>Window</h4>
+                            <p>Root window setup</p>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="goStep(1, this)" id="si-1">
+                        <div class="step-dot">2</div>
+                        <div class="step-meta">
+                            <h4>Labels</h4>
+                            <p>Text with .place()</p>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="goStep(2, this)" id="si-2">
+                        <div class="step-dot">3</div>
+                        <div class="step-meta">
+                            <h4>Entries</h4>
+                            <p>Text input boxes</p>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="goStep(3, this)" id="si-3">
+                        <div class="step-dot">4</div>
+                        <div class="step-meta">
+                            <h4>Dropdowns</h4>
+                            <p>Spinbox &amp; Combobox</p>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="goStep(4, this)" id="si-4">
+                        <div class="step-dot">5</div>
+                        <div class="step-meta">
+                            <h4>Checkboxes</h4>
+                            <p>BooleanVar ticks</p>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="goStep(5, this)" id="si-5">
+                        <div class="step-dot">6</div>
+                        <div class="step-meta">
+                            <h4>Frames</h4>
+                            <p>LabelFrame groups</p>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="goStep(6, this)" id="si-6">
+                        <div class="step-dot">7</div>
+                        <div class="step-meta">
+                            <h4>Full Form</h4>
+                            <p>Complete code</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-content-area">
+
+                    <!-- Step 1 -->
+                    <div class="step-panel active" id="sp-0">
+                        <div class="step-card">
+                            <h3>Step 1 — Create the window</h3>
+                            <p>Every tkinter program has the same skeleton: import, create the window, set its size and
+                                title, then call <code
+                                    style="font-family:var(--font-code);color:var(--blue)">mainloop()</code> to keep it
+                                open.</p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br>
+                                <span class="kw">from</span> tkinter <span class="kw">import</span> ttk<br><br>
+                                root = tk.<span class="cls">Tk</span>() <span class="cm"># create the window</span><br>
+                                root.geometry(<span class="str">"500x460"</span>) <span class="cm"># width x
+                                    height</span><br>
+                                root.title(<span class="str">"Data Entry Form"</span>) <span class="cm"># title bar
+                                    text</span><br><br>
+                                <span class="cm"># Always the last line — keeps the window open</span><br>
+                                root.mainloop()
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn primary"
+                                    onclick="goStep(1, document.getElementById('si-1'))">Next: Labels →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-panel" id="sp-1">
+                        <div class="step-card">
+                            <h3>Step 2 — Add labels with <code
+                                    style="font-family:var(--font-code);font-size:1.1rem">.place()</code></h3>
+                            <p>Labels display text. Use <code
+                                    style="font-family:var(--font-code);color:var(--blue)">.place(x=, y=)</code> to put
+                                them at exact pixel coordinates — x goes right, y goes down.</p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br>
+                                <span class="kw">from</span> tkinter <span class="kw">import</span> ttk<br><br>
+                                root = tk.<span class="cls">Tk</span>()<br>
+                                root.geometry(<span class="str">"500x460"</span>)<br>
+                                root.title(<span class="str">"Data Entry Form"</span>)<br><br>
+                                <span class="line-new"><span class="cm"># Labels — .place(x, y) sets exact pixel
+                                        position</span></span><br>
+                                <span class="line-new">tk.<span class="cls">Label</span>(root, text=<span
+                                        class="str">"First Name"</span>).place(x=<span class="num">60</span>, y=<span
+                                        class="num">30</span>)</span><br>
+                                <span class="line-new">tk.<span class="cls">Label</span>(root, text=<span
+                                        class="str">"Last Name"</span>).place(x=<span class="num">200</span>, y=<span
+                                        class="num">30</span>)</span><br>
+                                <span class="line-new">tk.<span class="cls">Label</span>(root, text=<span
+                                        class="str">"Title"</span>).place(x=<span class="num">360</span>, y=<span
+                                        class="num">30</span>)</span><br>
+                                <span class="line-new">tk.<span class="cls">Label</span>(root, text=<span
+                                        class="str">"Age"</span>).place(x=<span class="num">60</span>, y=<span
+                                        class="num">90</span>)</span><br>
+                                <span class="line-new">tk.<span class="cls">Label</span>(root, text=<span
+                                        class="str">"Nationality"</span>).place(x=<span class="num">200</span>, y=<span
+                                        class="num">90</span>)</span><br><br>
+                                root.mainloop()
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStep(0, document.getElementById('si-0'))">←
+                                    Back</button>
+                                <button class="step-btn primary"
+                                    onclick="goStep(2, document.getElementById('si-2'))">Next: Entries →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-panel" id="sp-2">
+                        <div class="step-card">
+                            <h3>Step 3 — Entry boxes <span class="new-tag">new</span></h3>
+                            <p><code style="font-family:var(--font-code);color:var(--blue)">tk.Entry()</code> creates a
+                                text field. Save it in a variable — that's how you'll read the user's input later with
+                                <code style="font-family:var(--font-code);color:var(--blue)">.get()</code>.
+                            </p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="cm"># ... (root setup and labels from Step 2) ...</span><br><br>
+                                <span class="line-new"><span class="cm"># Entry: text input box — width= sets its size
+                                        in characters</span></span><br>
+                                <span class="line-new">entry_fname = tk.<span class="cls">Entry</span>(root, width=<span
+                                        class="num">15</span>)</span><br>
+                                <span class="line-new">entry_fname.place(x=<span class="num">55</span>, y=<span
+                                        class="num">50</span>)</span><br>
+                                <span class="line-new"></span><br>
+                                <span class="line-new">entry_lname = tk.<span class="cls">Entry</span>(root, width=<span
+                                        class="num">15</span>)</span><br>
+                                <span class="line-new">entry_lname.place(x=<span class="num">195</span>, y=<span
+                                        class="num">50</span>)</span><br><br>
+                                <span class="cm"># Read user input later with: entry_fname.get()</span>
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStep(1, document.getElementById('si-1'))">←
+                                    Back</button>
+                                <button class="step-btn primary"
+                                    onclick="goStep(3, document.getElementById('si-3'))">Next: Dropdowns →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-panel" id="sp-3">
+                        <div class="step-card">
+                            <h3>Step 4 — Spinbox &amp; Combobox <span class="new-tag">new</span></h3>
+                            <p><code style="font-family:var(--font-code);color:var(--blue)">tk.Spinbox</code> = number
+                                picker with arrows. <code
+                                    style="font-family:var(--font-code);color:var(--blue)">ttk.Combobox</code> =
+                                dropdown from a list. Both use <code
+                                    style="font-family:var(--font-code);color:var(--blue)">.get()</code> to read the
+                                selection.</p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="cm"># ... (previous code) ...</span><br><br>
+                                <span class="line-new"><span class="cm"># Spinbox: number with up/down
+                                        arrows</span></span><br>
+                                <span class="line-new"><span class="cm"># from_= uses underscore — "from" is a Python
+                                        keyword!</span></span><br>
+                                <span class="line-new">spin_age = tk.<span class="cls">Spinbox</span>(root, from_=<span
+                                        class="num">16</span>, to=<span class="num">99</span>, width=<span
+                                        class="num">12</span>)</span><br>
+                                <span class="line-new">spin_age.place(x=<span class="num">55</span>, y=<span
+                                        class="num">110</span>)</span><br>
+                                <span class="line-new"></span><br>
+                                <span class="line-new"><span class="cm"># Combobox: dropdown — pass a list to
+                                        values=</span></span><br>
+                                <span class="line-new">nations = [<span class="str">"British"</span>, <span
+                                        class="str">"American"</span>, <span class="str">"French"</span>, <span
+                                        class="str">"Other"</span>]</span><br>
+                                <span class="line-new">combo_nation = ttk.<span class="cls">Combobox</span>(root,
+                                    values=nations, width=<span class="num">13</span>)</span><br>
+                                <span class="line-new">combo_nation.place(x=<span class="num">195</span>, y=<span
+                                        class="num">110</span>)</span><br>
+                                <span class="line-new"></span><br>
+                                <span class="line-new">titles = [<span class="str">"Mr"</span>, <span
+                                        class="str">"Ms"</span>, <span class="str">"Mrs"</span>, <span
+                                        class="str">"Dr"</span>, <span class="str">"Prof"</span>]</span><br>
+                                <span class="line-new">combo_title = ttk.<span class="cls">Combobox</span>(root,
+                                    values=titles, width=<span class="num">10</span>)</span><br>
+                                <span class="line-new">combo_title.place(x=<span class="num">350</span>, y=<span
+                                        class="num">50</span>)</span>
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStep(2, document.getElementById('si-2'))">←
+                                    Back</button>
+                                <button class="step-btn primary"
+                                    onclick="goStep(4, document.getElementById('si-4'))">Next: Checkboxes →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="step-panel" id="sp-4">
+                        <div class="step-card">
+                            <h3>Step 5 — Checkbuttons &amp; BooleanVar <span class="new-tag">new</span></h3>
+                            <p>A <code style="font-family:var(--font-code);color:var(--blue)">Checkbutton</code> needs a
+                                <code style="font-family:var(--font-code);color:var(--blue)">BooleanVar()</code> to
+                                store its state. The variable holds <code>True</code> when ticked, <code>False</code>
+                                when not. Read it with <code
+                                    style="font-family:var(--font-code);color:var(--blue)">.get()</code>.
+                            </p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="cm"># ... (previous code) ...</span><br><br>
+                                <span class="line-new"><span class="cm"># BooleanVar: a variable that stores True or
+                                        False</span></span><br>
+                                <span class="line-new">var_registered = tk.<span
+                                        class="cls">BooleanVar</span>()</span><br>
+                                <span class="line-new">var_terms = tk.<span class="cls">BooleanVar</span>()</span><br>
+                                <span class="line-new"></span><br>
+                                <span class="line-new"><span class="cm"># Checkbutton is linked to the variable via
+                                        variable=</span></span><br>
+                                <span class="line-new">tk.<span class="cls">Checkbutton</span>(root,</span><br>
+                                <span
+                                    class="line-new">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text=<span
+                                        class="str">"Currently Registered"</span>,</span><br>
+                                <span
+                                    class="line-new">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable=var_registered).place(x=<span
+                                        class="num">55</span>, y=<span class="num">195</span>)</span><br>
+                                <span class="line-new"></span><br>
+                                <span class="line-new">tk.<span class="cls">Checkbutton</span>(root,</span><br>
+                                <span
+                                    class="line-new">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text=<span
+                                        class="str">"I accept the terms and conditions."</span>,</span><br>
+                                <span
+                                    class="line-new">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable=var_terms).place(x=<span
+                                        class="num">55</span>, y=<span class="num">360</span>)</span>
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStep(3, document.getElementById('si-3'))">←
+                                    Back</button>
+                                <button class="step-btn primary"
+                                    onclick="goStep(5, document.getElementById('si-5'))">Next: Frames →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="step-panel" id="sp-5">
+                        <div class="step-card">
+                            <h3>Step 6 — LabelFrame groups <span class="new-tag">new</span></h3>
+                            <p>A <code style="font-family:var(--font-code);color:var(--blue)">LabelFrame</code> draws a
+                                titled border around a group of widgets. Crucially, widgets placed inside it use the
+                                <em>frame</em> as their parent, not <code>root</code>.
+                            </p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="cm"># ... (root setup) ...</span><br><br>
+                                <span class="line-new"><span class="cm"># LabelFrame — a titled border
+                                        box</span></span><br>
+                                <span class="line-new">frame_info = tk.<span class="cls">LabelFrame</span>(root,
+                                    text=<span class="str">"User Information"</span>,</span><br>
+                                <span
+                                    class="line-new">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padx=<span
+                                        class="num">5</span>, pady=<span class="num">5</span>)</span><br>
+                                <span class="line-new">frame_info.place(x=<span class="num">10</span>, y=<span
+                                        class="num">5</span>, width=<span class="num">470</span>, height=<span
+                                        class="num">145</span>)</span><br>
+                                <span class="line-new"></span><br>
+                                <span class="line-new"><span class="cm"># Widgets inside: parent is frame_info, NOT
+                                        root</span></span><br>
+                                <span class="line-new">tk.<span class="cls">Label</span>(frame_info, text=<span
+                                        class="str">"First Name"</span>).place(x=<span class="num">50</span>, y=<span
+                                        class="num">5</span>)</span><br>
+                                <span class="line-new">entry_fname = tk.<span class="cls">Entry</span>(frame_info,
+                                    width=<span class="num">15</span>)</span><br>
+                                <span class="line-new">entry_fname.place(x=<span class="num">15</span>, y=<span
+                                        class="num">25</span>)</span><br>
+                                <span class="line-new"></span><br>
+                                <span class="line-new">frame_reg = tk.<span class="cls">LabelFrame</span>(root,
+                                    text=<span class="str">"Registration Status"</span>,</span><br>
+                                <span
+                                    class="line-new">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padx=<span
+                                        class="num">5</span>, pady=<span class="num">5</span>)</span><br>
+                                <span class="line-new">frame_reg.place(x=<span class="num">10</span>, y=<span
+                                        class="num">160</span>, width=<span class="num">470</span>, height=<span
+                                        class="num">75</span>)</span>
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStep(4, document.getElementById('si-4'))">←
+                                    Back</button>
+                                <button class="step-btn primary"
+                                    onclick="goStep(6, document.getElementById('si-6'))">Final: Full Form →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7 — Full Form -->
+                    <div class="step-panel" id="sp-6">
+                        <div class="step-card" style="border-color:rgba(79,255,176,0.25)">
+                            <h3>Complete form — all elements together 🎉</h3>
+                            <p>The full program combining every concept: LabelFrames, Labels, Entries, Spinboxes,
+                                Comboboxes, Checkbuttons, and a Button that reads all values on click.</p>
+                            <div class="code-block" style="border-color:rgba(79,255,176,0.2)">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br>
+                                <span class="kw">from</span> tkinter <span class="kw">import</span> ttk<br><br>
+                                root = tk.<span class="cls">Tk</span>()<br>
+                                root.geometry(<span class="str">"500x460"</span>)<br>
+                                root.title(<span class="str">"Data Entry Form"</span>)<br><br>
+                                <span class="cm"># ── User Information ──────────────────────────</span><br>
+                                frame_info = tk.<span class="cls">LabelFrame</span>(root, text=<span class="str">"User
+                                    Information"</span>, padx=<span class="num">5</span>, pady=<span
+                                    class="num">5</span>)<br>
+                                frame_info.place(x=<span class="num">10</span>, y=<span class="num">5</span>,
+                                width=<span class="num">470</span>, height=<span class="num">145</span>)<br><br>
+                                tk.<span class="cls">Label</span>(frame_info, text=<span class="str">"First
+                                    Name"</span>).place(x=<span class="num">50</span>, y=<span class="num">5</span>)<br>
+                                tk.<span class="cls">Label</span>(frame_info, text=<span class="str">"Last
+                                    Name"</span>).place(x=<span class="num">195</span>, y=<span
+                                    class="num">5</span>)<br>
+                                tk.<span class="cls">Label</span>(frame_info, text=<span
+                                    class="str">"Title"</span>).place(x=<span class="num">360</span>, y=<span
+                                    class="num">5</span>)<br><br>
+                                entry_fname = tk.<span class="cls">Entry</span>(frame_info, width=<span
+                                    class="num">15</span>); entry_fname.place(x=<span class="num">15</span>, y=<span
+                                    class="num">25</span>)<br>
+                                entry_lname = tk.<span class="cls">Entry</span>(frame_info, width=<span
+                                    class="num">15</span>); entry_lname.place(x=<span class="num">160</span>, y=<span
+                                    class="num">25</span>)<br><br>
+                                titles = [<span class="str">"Mr"</span>, <span class="str">"Ms"</span>, <span
+                                    class="str">"Mrs"</span>, <span class="str">"Dr"</span>, <span
+                                    class="str">"Prof"</span>]<br>
+                                combo_title = ttk.<span class="cls">Combobox</span>(frame_info, values=titles,
+                                width=<span class="num">10</span>)<br>
+                                combo_title.place(x=<span class="num">330</span>, y=<span class="num">25</span>)<br><br>
+                                tk.<span class="cls">Label</span>(frame_info, text=<span
+                                    class="str">"Age"</span>).place(x=<span class="num">50</span>, y=<span
+                                    class="num">65</span>)<br>
+                                tk.<span class="cls">Label</span>(frame_info, text=<span
+                                    class="str">"Nationality"</span>).place(x=<span class="num">195</span>, y=<span
+                                    class="num">65</span>)<br><br>
+                                spin_age = tk.<span class="cls">Spinbox</span>(frame_info, from_=<span
+                                    class="num">16</span>, to=<span class="num">99</span>, width=<span
+                                    class="num">12</span>)<br>
+                                spin_age.place(x=<span class="num">15</span>, y=<span class="num">85</span>)<br>
+                                nations = [<span class="str">"British"</span>, <span class="str">"American"</span>,
+                                <span class="str">"French"</span>, <span class="str">"German"</span>, <span
+                                    class="str">"Other"</span>]<br>
+                                combo_nation = ttk.<span class="cls">Combobox</span>(frame_info, values=nations,
+                                width=<span class="num">13</span>)<br>
+                                combo_nation.place(x=<span class="num">160</span>, y=<span
+                                    class="num">85</span>)<br><br>
+                                <span class="cm"># ── Registration Status ───────────────────────</span><br>
+                                frame_reg = tk.<span class="cls">LabelFrame</span>(root, text=<span
+                                    class="str">"Registration Status"</span>, padx=<span class="num">5</span>,
+                                pady=<span class="num">5</span>)<br>
+                                frame_reg.place(x=<span class="num">10</span>, y=<span class="num">160</span>,
+                                width=<span class="num">470</span>, height=<span class="num">75</span>)<br><br>
+                                tk.<span class="cls">Label</span>(frame_reg, text=<span class="str">"# Completed
+                                    Courses"</span>).place(x=<span class="num">160</span>, y=<span
+                                    class="num">5</span>)<br>
+                                tk.<span class="cls">Label</span>(frame_reg, text=<span class="str">"#
+                                    Semesters"</span>).place(x=<span class="num">320</span>, y=<span
+                                    class="num">5</span>)<br><br>
+                                var_reg = tk.<span class="cls">BooleanVar</span>()<br>
+                                tk.<span class="cls">Checkbutton</span>(frame_reg, text=<span class="str">"Currently
+                                    Registered"</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable=var_reg).place(x=<span
+                                    class="num">5</span>, y=<span class="num">30</span>)<br>
+                                spin_courses = tk.<span class="cls">Spinbox</span>(frame_reg, from_=<span
+                                    class="num">0</span>, to=<span class="num">50</span>, width=<span
+                                    class="num">10</span>)<br>
+                                spin_courses.place(x=<span class="num">160</span>, y=<span class="num">30</span>)<br>
+                                spin_sem = tk.<span class="cls">Spinbox</span>(frame_reg, from_=<span
+                                    class="num">0</span>, to=<span class="num">20</span>, width=<span
+                                    class="num">10</span>)<br>
+                                spin_sem.place(x=<span class="num">320</span>, y=<span class="num">30</span>)<br><br>
+                                <span class="cm"># ── Terms &amp; Conditions ───────────────────────</span><br>
+                                frame_terms = tk.<span class="cls">LabelFrame</span>(root, text=<span class="str">"Terms
+                                    &amp; Conditions"</span>, padx=<span class="num">5</span>, pady=<span
+                                    class="num">5</span>)<br>
+                                frame_terms.place(x=<span class="num">10</span>, y=<span class="num">245</span>,
+                                width=<span class="num">470</span>, height=<span class="num">55</span>)<br><br>
+                                var_terms = tk.<span class="cls">BooleanVar</span>()<br>
+                                tk.<span class="cls">Checkbutton</span>(frame_terms, text=<span class="str">"I accept
+                                    the terms and conditions."</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variable=var_terms).place(x=<span
+                                    class="num">5</span>, y=<span class="num">5</span>)<br><br>
+                                <span class="cm"># ── Submit button ─────────────────────────────</span><br>
+                                <span class="kw">def</span> <span class="fn">submit</span>():<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;data = {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"first_name"</span>:
+                                entry_fname.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"last_name"</span>:
+                                entry_lname.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"title"</span>:
+                                combo_title.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"age"</span>:
+                                spin_age.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"nationality"</span>:
+                                combo_nation.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"registered"</span>:
+                                var_reg.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"courses"</span>:
+                                spin_courses.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"semesters"</span>:
+                                spin_sem.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"terms"</span>:
+                                var_terms.<span class="fn">get</span>(),<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(data)<br><br>
+                                tk.<span class="cls">Button</span>(root, text=<span class="str">"Enter data"</span>,
+                                width=<span class="num">62</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command=submit).place(x=<span
+                                    class="num">10</span>, y=<span class="num">415</span>)<br><br>
+                                root.mainloop()
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStep(5, document.getElementById('si-5'))">←
+                                    Back</button>
+                                <button class="step-btn primary" onclick="window.location='#cheatsheet'">View Cheatsheet
+                                    →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CHEATSHEET ── -->
+    <section id="cheatsheet">
+        <div style="max-width:1100px;margin:0 auto">
+            <div class="section-label">Quick reference</div>
+            <h2>tkinter cheatsheet</h2>
+            <p class="section-intro">Everything you need at a glance. Save this page as a reference while you code.</p>
+
+            <div class="cheat-grid">
+                <div class="cheat-card">
+                    <div class="cheat-header">
+                        <div class="cheat-dot" style="background:#4fffb0"></div>
+                        <h4>Window setup</h4>
+                    </div>
+                    <div class="cheat-body">
+                        <span style="color:#c084fc">import</span> tkinter <span style="color:#c084fc">as</span> tk<br>
+                        <span style="color:#c084fc">from</span> tkinter <span style="color:#c084fc">import</span>
+                        ttk<br>
+                        root = tk.Tk()<br>
+                        root.geometry(<span style="color:#ffd166">"500x400"</span>)<br>
+                        root.title(<span style="color:#ffd166">"My App"</span>)<br>
+                        <span style="color:#4a5168"># ... widgets ...</span><br>
+                        root.mainloop()
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <div class="cheat-header">
+                        <div class="cheat-dot" style="background:#4cc9f0"></div>
+                        <h4>Label &amp; Entry</h4>
+                    </div>
+                    <div class="cheat-body">
+                        <span style="color:#4a5168"># Label</span><br>
+                        tk.Label(root, text=<span style="color:#ffd166">"Name"</span>).place(x=<span
+                            style="color:#4cc9f0">10</span>, y=<span style="color:#4cc9f0">10</span>)<br><br>
+                        <span style="color:#4a5168"># Entry (text field)</span><br>
+                        e = tk.Entry(root, width=<span style="color:#4cc9f0">20</span>)<br>
+                        e.place(x=<span style="color:#4cc9f0">10</span>, y=<span style="color:#4cc9f0">35</span>)<br>
+                        value = e.get() <span style="color:#4a5168"># read text</span>
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <div class="cheat-header">
+                        <div class="cheat-dot" style="background:#fb923c"></div>
+                        <h4>Button</h4>
+                    </div>
+                    <div class="cheat-body">
+                        <span style="color:#4a5168"># Define function first</span><br>
+                        <span style="color:#c084fc">def</span> <span style="color:#4fffb0">my_func</span>():<br>
+                        &nbsp;&nbsp;print(<span style="color:#ffd166">"clicked!"</span>)<br><br>
+                        <span style="color:#4a5168"># command= no brackets!</span><br>
+                        tk.Button(root,<br>
+                        &nbsp;&nbsp;text=<span style="color:#ffd166">"Click"</span>,<br>
+                        &nbsp;&nbsp;command=my_func).pack()
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <div class="cheat-header">
+                        <div class="cheat-dot" style="background:#7b5cff"></div>
+                        <h4>Spinbox &amp; Combobox</h4>
+                    </div>
+                    <div class="cheat-body">
+                        <span style="color:#4a5168"># Number picker</span><br>
+                        s = tk.Spinbox(root, from_=<span style="color:#4cc9f0">0</span>, to=<span
+                            style="color:#4cc9f0">100</span>)<br>
+                        s.place(x=<span style="color:#4cc9f0">10</span>, y=<span
+                            style="color:#4cc9f0">10</span>)<br><br>
+                        <span style="color:#4a5168"># Dropdown</span><br>
+                        opts = [<span style="color:#ffd166">"A"</span>, <span style="color:#ffd166">"B"</span>, <span
+                            style="color:#ffd166">"C"</span>]<br>
+                        c = ttk.Combobox(root, values=opts)<br>
+                        c.place(x=<span style="color:#4cc9f0">10</span>, y=<span style="color:#4cc9f0">40</span>)<br>
+                        picked = c.get()
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <div class="cheat-header">
+                        <div class="cheat-dot" style="background:#ffd166"></div>
+                        <h4>Checkbutton</h4>
+                    </div>
+                    <div class="cheat-body">
+                        <span style="color:#4a5168"># Must link to a BooleanVar</span><br>
+                        var = tk.BooleanVar()<br><br>
+                        tk.Checkbutton(root,<br>
+                        &nbsp;&nbsp;text=<span style="color:#ffd166">"Accept terms"</span>,<br>
+                        &nbsp;&nbsp;variable=var).place(x=<span style="color:#4cc9f0">10</span>, y=<span
+                            style="color:#4cc9f0">10</span>)<br><br>
+                        is_ticked = var.get() <span style="color:#4a5168"># True/False</span>
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <div class="cheat-header">
+                        <div class="cheat-dot" style="background:#ff6b6b"></div>
+                        <h4>LabelFrame</h4>
+                    </div>
+                    <div class="cheat-body">
+                        <span style="color:#4a5168"># Grouped border box</span><br>
+                        f = tk.LabelFrame(root,<br>
+                        &nbsp;&nbsp;text=<span style="color:#ffd166">"Section"</span>,<br>
+                        &nbsp;&nbsp;padx=<span style="color:#4cc9f0">5</span>, pady=<span
+                            style="color:#4cc9f0">5</span>)<br>
+                        f.place(x=<span style="color:#4cc9f0">10</span>, y=<span style="color:#4cc9f0">10</span>,
+                        width=<span style="color:#4cc9f0">300</span>, height=<span
+                            style="color:#4cc9f0">100</span>)<br><br>
+                        <span style="color:#4a5168"># Parent is f, not root!</span><br>
+                        tk.Label(f, text=<span style="color:#ffd166">"Inside"</span>).place(x=<span
+                            style="color:#4cc9f0">5</span>, y=<span style="color:#4cc9f0">5</span>)
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <div class="cheat-header">
+                        <div class="cheat-dot" style="background:#4fffb0"></div>
+                        <h4>Placement methods</h4>
+                    </div>
+                    <div class="cheat-body">
+                        <span style="color:#4a5168"># .place() — exact pixels</span><br>
+                        widget.place(x=<span style="color:#4cc9f0">50</span>, y=<span
+                            style="color:#4cc9f0">100</span>)<br><br>
+                        <span style="color:#4a5168"># .pack() — stack top to bottom</span><br>
+                        widget.pack(pady=<span style="color:#4cc9f0">10</span>)<br><br>
+                        <span style="color:#4a5168"># .grid() — row/column table</span><br>
+                        widget.grid(row=<span style="color:#4cc9f0">0</span>, column=<span
+                            style="color:#4cc9f0">1</span>, padx=<span style="color:#4cc9f0">5</span>)
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <div class="cheat-header">
+                        <div class="cheat-dot" style="background:#4cc9f0"></div>
+                        <h4>Reading values</h4>
+                    </div>
+                    <div class="cheat-body">
+                        <span style="color:#4a5168"># Entry, Spinbox, Combobox</span><br>
+                        text = entry.get()<br>
+                        num = spinbox.get() <span style="color:#4a5168"># string!</span><br>
+                        sel = combobox.get()<br><br>
+                        <span style="color:#4a5168"># BooleanVar (Checkbutton)</span><br>
+                        is_on = bool_var.get() <span style="color:#4a5168"># True/False</span><br><br>
+                        <span style="color:#4a5168"># Convert number string to int</span><br>
+                        age = int(spinbox.get())
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built for learning Python GUI development · <strong>TkLearn</strong></p>
+        <p style="margin-top:0.5rem;font-size:0.78rem">Run your code with: <code
+                style="font-family:'JetBrains Mono',monospace;color:#4cc9f0">python your_file.py</code></p>
+    </footer>
+
+
+    <script>
+        function openProject(id) {
+            document.getElementById('projects').style.display = 'none';
+            document.getElementById(id).style.display = 'block';
+            window.scrollTo({ top: document.getElementById(id).offsetTop - 80, behavior: 'smooth' });
+        }
+
+        function closeProject(id) {
+            document.getElementById(id).style.display = 'none';
+            document.getElementById('projects').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('projects').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        function showWidget(id, btn) {
+            document.querySelectorAll('.widget-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.wtab').forEach(t => t.classList.remove('active'));
+            document.getElementById('wp-' + id).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        function goStep(idx, sidebarItem) {
+            document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.step-item').forEach(s => s.classList.remove('active'));
+            document.getElementById('sp-' + idx).classList.add('active');
+            sidebarItem.classList.add('active');
+            for (let i = 0; i < idx; i++) {
+                document.getElementById('si-' + i).classList.add('done');
+            }
+            document.getElementById('builder').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function copyCode(btn) {
+            const block = btn.parentElement;
+            const text = block.innerText.replace('copy\n', '').replace('copy', '');
+            navigator.clipboard.writeText(text.trim()).then(() => {
+                btn.textContent = 'copied!';
+                btn.style.color = 'var(--accent)';
+                setTimeout(() => { btn.textContent = 'copy'; btn.style.color = ''; }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
