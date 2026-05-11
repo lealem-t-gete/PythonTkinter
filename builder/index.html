@@ -119,6 +119,9 @@ svg{display:block;flex-shrink:0;}
 .cv-widget[data-type="Checkbutton"]::before{content:'☐ ';}
 .cv-widget[data-type="Combobox"]{background:var(--bg3);color:var(--text);border:2px solid #06b6d4;justify-content:space-between;}
 .cv-widget[data-type="Combobox"]::after{content:'▾';color:#06b6d4;font-size:.75rem;margin-left:6px;}
+.cv-widget[data-type="Radiobutton"]{background:#1e0f2e;color:#f9a8d4;border:1px solid #ec4899;gap:4px;}
+.palette-item.pi-rb::before{background:#ec4899;}
+.pi-rb .pi-icon{background:rgba(236,72,153,.12);color:#f472b6;}
 .cv-badge{position:absolute;top:-8px;left:4px;font-family:var(--font-code);font-size:.58rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--bg);color:var(--muted);padding:1px 4px;border-radius:3px;border:1px solid var(--border2);pointer-events:none;opacity:0;transition:opacity .12s;}
 .cv-widget:hover .cv-badge,.cv-widget.selected .cv-badge{opacity:1;}
 .cv-resize{position:absolute;bottom:2px;right:2px;width:10px;height:10px;cursor:se-resize;}
@@ -210,6 +213,11 @@ svg{display:block;flex-shrink:0;}
         <span class="pi-icon">📋</span>
         <div class="pi-info"><span class="pi-name">Combobox</span><span class="pi-desc">Dropdown list</span></div>
         <span class="pi-chip">ttk</span>
+      </div>
+      <div class="palette-item pi-rb" draggable="true" data-widget-type="Radiobutton">
+        <span class="pi-icon">🔵</span>
+        <div class="pi-info"><span class="pi-name">Radiobutton</span><span class="pi-desc">Single choice</span></div>
+        <span class="pi-chip">tk</span>
       </div>
     </div>
     <div class="sb-hint">💡 Click a widget on canvas to edit its properties. Press <kbd>Delete</kbd> to remove it.</div>
