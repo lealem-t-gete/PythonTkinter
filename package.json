@@ -1,0 +1,20 @@
+{
+  "name": "python-tkinter",
+  "version": "1.0.0",
+  "description": "TkLearn - Build GUIs with Python",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "python",
+    "tkinter",
+    "gui"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
