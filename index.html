@@ -418,10 +418,11 @@
                         essay.</p>
                     <button class="btn-primary" style="margin-top: 1rem; padding: 0.5rem 1rem;">Start Project →</button>
                 </div>
-                <div class="about-card" style="opacity: 0.6; cursor: not-allowed;">
+                <div class="about-card" style="cursor:pointer;" onclick="openProject('calculator')">
                     <div class="about-card-icon" style="background:rgba(76,201,240,0.1)">🧮</div>
-                    <h3>Calculator (Coming Soon)</h3>
-                    <p>Build a working calculator using grid layout and button command callbacks.</p>
+                    <h3>Calculator</h3>
+                    <p>Build a working calculator using <code style="color:var(--blue);font-family:var(--font-code)">.grid()</code> layout and button <code style="color:var(--blue);font-family:var(--font-code)">command=</code> callbacks.</p>
+                    <button class="btn-primary" style="margin-top:1rem;padding:0.5rem 1rem;">Start Project →</button>
                 </div>
                 <div class="about-card" style="opacity: 0.6; cursor: not-allowed;">
                     <div class="about-card-icon" style="background:rgba(255,209,102,0.1)">✅</div>
@@ -878,6 +879,206 @@
         </div>
     </section>
 
+    <!-- ── CALCULATOR BUILDER ── -->
+    <section id="calculator" style="display: none;">
+        <div style="max-width:1200px;margin:0 auto">
+            <button class="btn-ghost" style="margin-bottom: 2rem;" onclick="closeProject('calculator')">← Back to Projects</button>
+            <div class="section-label">Project 2</div>
+            <h2>Simple Calculator</h2>
+            <p class="section-intro">Build a working GUI calculator using <code style="color:var(--blue);font-family:var(--font-code)">.grid()</code> layout.</p>
+
+            <div class="builder-layout">
+                <div class="steps-sidebar">
+                    <div class="step-item active" id="calc-si-1" onclick="goStepCalc(1, this)">
+                        <div class="step-dot">1</div>
+                        <div class="step-meta">
+                            <h4>Window & Entry</h4>
+                            <p>Setup display</p>
+                        </div>
+                    </div>
+                    <div class="step-item" id="calc-si-2" onclick="goStepCalc(2, this)">
+                        <div class="step-dot">2</div>
+                        <div class="step-meta">
+                            <h4>Number Buttons</h4>
+                            <p>Grid layout</p>
+                        </div>
+                    </div>
+                    <div class="step-item" id="calc-si-3" onclick="goStepCalc(3, this)">
+                        <div class="step-dot">3</div>
+                        <div class="step-meta">
+                            <h4>Click Logic</h4>
+                            <p>Add to display</p>
+                        </div>
+                    </div>
+                    <div class="step-item" id="calc-si-4" onclick="goStepCalc(4, this)">
+                        <div class="step-dot">4</div>
+                        <div class="step-meta">
+                            <h4>Eval & Clear</h4>
+                            <p>Calculate result</p>
+                        </div>
+                    </div>
+                    <div class="step-item" id="calc-si-5" onclick="goStepCalc(5, this)">
+                        <div class="step-dot">5</div>
+                        <div class="step-meta">
+                            <h4>Complete Code</h4>
+                            <p>Put it all together</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-content-area">
+                    <!-- Step 1 -->
+                    <div class="step-panel active" id="calc-sp-1">
+                        <div class="step-card">
+                            <h3>1. Window & Display</h3>
+                            <p>We need a window and a large entry box at the top to display numbers.</p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br><br>
+                                root = tk.Tk()<br>
+                                root.title(<span class="str">"Calculator"</span>)<br>
+                                root.geometry(<span class="str">"300x400"</span>)<br><br>
+                                <span class="cm"># Entry for display</span><br>
+                                display = tk.Entry(root, font=(<span class="str">"Arial"</span>, <span class="num">24</span>), justify=<span class="str">"right"</span>)<br>
+                                display.grid(row=<span class="num">0</span>, column=<span class="num">0</span>, columnspan=<span class="num">4</span>, sticky=<span class="str">"we"</span>, pady=<span class="num">10</span>, padx=<span class="num">10</span>)<br><br>
+                                root.mainloop()
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn primary" onclick="goStepCalc(2, document.getElementById('calc-si-2'))">Next: Number Buttons →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-panel" id="calc-sp-2">
+                        <div class="step-card">
+                            <h3>2. Number Buttons</h3>
+                            <p>Let's add buttons for numbers 7, 8, 9 using the <code style="color:var(--blue);font-family:var(--font-code)">.grid()</code> manager.</p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="cm"># Buttons Row 1</span><br>
+                                tk.Button(root, text=<span class="str">"7"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>).grid(row=<span class="num">1</span>, column=<span class="num">0</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"8"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>).grid(row=<span class="num">1</span>, column=<span class="num">1</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"9"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>).grid(row=<span class="num">1</span>, column=<span class="num">2</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"/"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, bg=<span class="str">"#ffd166"</span>).grid(row=<span class="num">1</span>, column=<span class="num">3</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStepCalc(1, document.getElementById('calc-si-1'))">← Back</button>
+                                <button class="step-btn primary" onclick="goStepCalc(3, document.getElementById('calc-si-3'))">Next: Click Logic →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-panel" id="calc-sp-3">
+                        <div class="step-card">
+                            <h3>3. Click Logic</h3>
+                            <p>Now, let's create a function that runs when a button is clicked, inserting the clicked number into the display.</p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="kw">def</span> <span class="fn">button_click</span>(number):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;current = display.get()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;display.delete(<span class="num">0</span>, tk.END)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;display.insert(<span class="num">0</span>, <span class="str">str</span>(current) + <span class="str">str</span>(number))<br><br>
+                                <span class="cm"># Use lambda to pass arguments to the command function</span><br>
+                                tk.Button(root, text=<span class="str">"7"</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">7</span>)).grid(row=<span class="num">1</span>, column=<span class="num">0</span>)
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStepCalc(2, document.getElementById('calc-si-2'))">← Back</button>
+                                <button class="step-btn primary" onclick="goStepCalc(4, document.getElementById('calc-si-4'))">Next: Eval & Clear →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-panel" id="calc-sp-4">
+                        <div class="step-card">
+                            <h3>4. Eval & Clear</h3>
+                            <p>Finally, we need a Clear button and an Equals button to calculate the result using Python's <code style="color:var(--blue);font-family:var(--font-code)">eval()</code> function.</p>
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="kw">def</span> <span class="fn">button_clear</span>():<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;display.delete(<span class="num">0</span>, tk.END)<br><br>
+                                <span class="kw">def</span> <span class="fn">button_equal</span>():<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;current = display.get()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;display.delete(<span class="num">0</span>, tk.END)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">try</span>:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="str">str</span>(<span class="fn">eval</span>(current))<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display.insert(<span class="num">0</span>, result)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">except</span> <span class="cls">Exception</span>:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display.insert(<span class="num">0</span>, <span class="str">"Error"</span>)<br><br>
+                                <span class="cm"># Add equal and clear buttons</span><br>
+                                tk.Button(root, text=<span class="str">"C"</span>, command=button_clear, bg=<span class="str">"#ff6b6b"</span>).grid(row=<span class="num">5</span>, column=<span class="num">0</span>, columnspan=<span class="num">2</span>, sticky=<span class="str">"we"</span>)<br>
+                                tk.Button(root, text=<span class="str">"="</span>, command=button_equal, bg=<span class="str">"#4fffb0"</span>).grid(row=<span class="num">5</span>, column=<span class="num">2</span>, columnspan=<span class="num">2</span>, sticky=<span class="str">"we"</span>)
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStepCalc(3, document.getElementById('calc-si-3'))">← Back</button>
+                                <button class="step-btn primary" onclick="goStepCalc(5, document.getElementById('calc-si-5'))">Next: Complete Code →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="step-panel" id="calc-sp-5">
+                        <div class="step-card">
+                            <h3>5. Complete Code</h3>
+                            <p>Here is the full calculator code put together. Copy and run this in your Python environment!</p>
+                            <div class="code-block" style="max-height: 400px; overflow-y: auto;">
+                                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+                                <span class="kw">import</span> tkinter <span class="kw">as</span> tk<br><br>
+                                <span class="kw">def</span> <span class="fn">button_click</span>(number):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;current = display.get()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;display.delete(<span class="num">0</span>, tk.END)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;display.insert(<span class="num">0</span>, <span class="str">str</span>(current) + <span class="str">str</span>(number))<br><br>
+                                <span class="kw">def</span> <span class="fn">button_clear</span>():<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;display.delete(<span class="num">0</span>, tk.END)<br><br>
+                                <span class="kw">def</span> <span class="fn">button_equal</span>():<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;current = display.get()<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;display.delete(<span class="num">0</span>, tk.END)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">try</span>:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = <span class="str">str</span>(<span class="fn">eval</span>(current))<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display.insert(<span class="num">0</span>, result)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">except</span> <span class="cls">Exception</span>:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display.insert(<span class="num">0</span>, <span class="str">"Error"</span>)<br><br>
+                                root = tk.Tk()<br>
+                                root.title(<span class="str">"Calculator"</span>)<br>
+                                root.geometry(<span class="str">"300x400"</span>)<br><br>
+                                display = tk.Entry(root, font=(<span class="str">"Arial"</span>, <span class="num">24</span>), justify=<span class="str">"right"</span>)<br>
+                                display.grid(row=<span class="num">0</span>, column=<span class="num">0</span>, columnspan=<span class="num">4</span>, sticky=<span class="str">"we"</span>, pady=<span class="num">10</span>, padx=<span class="num">10</span>)<br><br>
+                                <span class="cm"># Buttons Row 1</span><br>
+                                tk.Button(root, text=<span class="str">"7"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">7</span>)).grid(row=<span class="num">1</span>, column=<span class="num">0</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"8"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">8</span>)).grid(row=<span class="num">1</span>, column=<span class="num">1</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"9"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">9</span>)).grid(row=<span class="num">1</span>, column=<span class="num">2</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"/"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, bg=<span class="str">"#ffd166"</span>, command=<span class="kw">lambda</span>: button_click(<span class="str">"/"</span>)).grid(row=<span class="num">1</span>, column=<span class="num">3</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br><br>
+                                <span class="cm"># Buttons Row 2</span><br>
+                                tk.Button(root, text=<span class="str">"4"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">4</span>)).grid(row=<span class="num">2</span>, column=<span class="num">0</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"5"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">5</span>)).grid(row=<span class="num">2</span>, column=<span class="num">1</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"6"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">6</span>)).grid(row=<span class="num">2</span>, column=<span class="num">2</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"*"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, bg=<span class="str">"#ffd166"</span>, command=<span class="kw">lambda</span>: button_click(<span class="str">"*"</span>)).grid(row=<span class="num">2</span>, column=<span class="num">3</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br><br>
+                                <span class="cm"># Buttons Row 3</span><br>
+                                tk.Button(root, text=<span class="str">"1"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">1</span>)).grid(row=<span class="num">3</span>, column=<span class="num">0</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"2"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">2</span>)).grid(row=<span class="num">3</span>, column=<span class="num">1</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"3"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">3</span>)).grid(row=<span class="num">3</span>, column=<span class="num">2</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"-"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, bg=<span class="str">"#ffd166"</span>, command=<span class="kw">lambda</span>: button_click(<span class="str">"-"</span>)).grid(row=<span class="num">3</span>, column=<span class="num">3</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br><br>
+                                <span class="cm"># Buttons Row 4</span><br>
+                                tk.Button(root, text=<span class="str">"0"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="num">0</span>)).grid(row=<span class="num">4</span>, column=<span class="num">0</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"."</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, command=<span class="kw">lambda</span>: button_click(<span class="str">"."</span>)).grid(row=<span class="num">4</span>, column=<span class="num">1</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"+"</span>, width=<span class="num">5</span>, height=<span class="num">2</span>, bg=<span class="str">"#ffd166"</span>, command=<span class="kw">lambda</span>: button_click(<span class="str">"+"</span>)).grid(row=<span class="num">4</span>, column=<span class="num">2</span>, columnspan=<span class="num">2</span>, sticky=<span class="str">"we"</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br><br>
+                                <span class="cm"># Row 5: Clear and Equal</span><br>
+                                tk.Button(root, text=<span class="str">"C"</span>, height=<span class="num">2</span>, command=button_clear, bg=<span class="str">"#ff6b6b"</span>).grid(row=<span class="num">5</span>, column=<span class="num">0</span>, columnspan=<span class="num">2</span>, sticky=<span class="str">"we"</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br>
+                                tk.Button(root, text=<span class="str">"="</span>, height=<span class="num">2</span>, command=button_equal, bg=<span class="str">"#4fffb0"</span>).grid(row=<span class="num">5</span>, column=<span class="num">2</span>, columnspan=<span class="num">2</span>, sticky=<span class="str">"we"</span>, padx=<span class="num">5</span>, pady=<span class="num">5</span>)<br><br>
+                                root.mainloop()
+                            </div>
+                            <div class="step-nav">
+                                <button class="step-btn" onclick="goStepCalc(4, document.getElementById('calc-si-4'))">← Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── CHEATSHEET ── -->
     <section id="cheatsheet">
         <div style="max-width:1100px;margin:0 auto">
@@ -1056,14 +1257,26 @@
         }
 
         function goStep(idx, sidebarItem) {
-            document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.step-item').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('#builder .step-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('#builder .step-item').forEach(s => s.classList.remove('active'));
             document.getElementById('sp-' + idx).classList.add('active');
             sidebarItem.classList.add('active');
             for (let i = 0; i < idx; i++) {
                 document.getElementById('si-' + i).classList.add('done');
             }
             document.getElementById('builder').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function goStepCalc(idx, sidebarItem) {
+            document.querySelectorAll('#calculator .step-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('#calculator .step-item').forEach(s => s.classList.remove('active'));
+            document.getElementById('calc-sp-' + idx).classList.add('active');
+            sidebarItem.classList.add('active');
+            for (let i = 0; i < idx; i++) {
+                let el = document.getElementById('calc-si-' + i);
+                if (el) el.classList.add('done');
+            }
+            document.getElementById('calculator').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function copyCode(btn) {
