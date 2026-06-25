@@ -1,0 +1,21 @@
+{
+  "name": "python-tkinter",
+  "version": "1.0.0",
+  "description": "TkLearn - Build GUIs with Python - A complete interactive guide to building GUI applications with Tkinter",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [
+    "python",
+    "tkinter",
+    "gui",
+    "tutorial",
+    "education"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  }
+}
